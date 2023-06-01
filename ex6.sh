@@ -16,7 +16,7 @@ num_of_files=${1:-50}
 for ((i=1; i<=$num_of_files; ++i))
 do
   file_name="File_${i}.dat"
-  printf '0%.0s' $(seq $i) > "${folder_name}/${file_name}"
+  dd if=/dev/zero of=${folder_name}/${file_name} bs=1 count=$i status=none
 done
 
 
